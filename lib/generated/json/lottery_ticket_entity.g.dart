@@ -8,28 +8,40 @@ LotteryTicketEntity $LotteryTicketEntityFromJson(Map<String, dynamic> json) {
   if (lotterieDto != null) {
     lotteryTicketEntity.lotterieDto = lotterieDto;
   }
+  final List<LotteryTicketTickets>? tickets = (json['tickets'] as List<
+      dynamic>?)
+      ?.map(
+          (e) =>
+      jsonConvert.convert<LotteryTicketTickets>(e) as LotteryTicketTickets)
+      .toList();
+  if (tickets != null) {
+    lotteryTicketEntity.tickets = tickets;
+  }
   return lotteryTicketEntity;
 }
 
 Map<String, dynamic> $LotteryTicketEntityToJson(LotteryTicketEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['lotterieDto'] = entity.lotterieDto?.toJson();
+  data['tickets'] = entity.tickets?.map((v) => v.toJson()).toList();
   return data;
 }
 
 extension LotteryTicketEntityExtension on LotteryTicketEntity {
   LotteryTicketEntity copyWith({
     LotteryTicketLotterieDto? lotterieDto,
+    List<LotteryTicketTickets>? tickets,
   }) {
     return LotteryTicketEntity()
-      ..lotterieDto = lotterieDto ?? this.lotterieDto;
+      ..lotterieDto = lotterieDto ?? this.lotterieDto
+      ..tickets = tickets ?? this.tickets;
   }
 }
 
 LotteryTicketLotterieDto $LotteryTicketLotterieDtoFromJson(
     Map<String, dynamic> json) {
   final LotteryTicketLotterieDto lotteryTicketLotterieDto = LotteryTicketLotterieDto();
-  final String? id = jsonConvert.convert<String>(json['id']);
+  final dynamic id = json['id'];
   if (id != null) {
     lotteryTicketLotterieDto.id = id;
   }
@@ -62,12 +74,7 @@ LotteryTicketLotterieDto $LotteryTicketLotterieDtoFromJson(
   if (hour != null) {
     lotteryTicketLotterieDto.hour = hour;
   }
-  final List<
-      LotteryTicketLotterieDtoTickets>? tickets = (json['tickets'] as List<
-      dynamic>?)?.map(
-          (e) =>
-      jsonConvert.convert<LotteryTicketLotterieDtoTickets>(
-          e) as LotteryTicketLotterieDtoTickets).toList();
+  final dynamic tickets = json['tickets'];
   if (tickets != null) {
     lotteryTicketLotterieDto.tickets = tickets;
   }
@@ -85,13 +92,13 @@ Map<String, dynamic> $LotteryTicketLotterieDtoToJson(
   data['cashPrize'] = entity.cashPrize;
   data['status'] = entity.status;
   data['hour'] = entity.hour;
-  data['tickets'] = entity.tickets?.map((v) => v.toJson()).toList();
+  data['tickets'] = entity.tickets;
   return data;
 }
 
 extension LotteryTicketLotterieDtoExtension on LotteryTicketLotterieDto {
   LotteryTicketLotterieDto copyWith({
-    String? id,
+    dynamic id,
     String? name,
     String? startedDate,
     String? endDate,
@@ -99,7 +106,7 @@ extension LotteryTicketLotterieDtoExtension on LotteryTicketLotterieDto {
     double? cashPrize,
     String? status,
     dynamic hour,
-    List<LotteryTicketLotterieDtoTickets>? tickets,
+    dynamic tickets,
   }) {
     return LotteryTicketLotterieDto()
       ..id = id ?? this.id
@@ -175,54 +182,59 @@ extension LotteryTicketLotterieDtoAdminExtension on LotteryTicketLotterieDtoAdmi
   }
 }
 
-LotteryTicketLotterieDtoTickets $LotteryTicketLotterieDtoTicketsFromJson(
-    Map<String, dynamic> json) {
-  final LotteryTicketLotterieDtoTickets lotteryTicketLotterieDtoTickets = LotteryTicketLotterieDtoTickets();
+LotteryTicketTickets $LotteryTicketTicketsFromJson(Map<String, dynamic> json) {
+  final LotteryTicketTickets lotteryTicketTickets = LotteryTicketTickets();
   final String? id = jsonConvert.convert<String>(json['id']);
   if (id != null) {
-    lotteryTicketLotterieDtoTickets.id = id;
+    lotteryTicketTickets.id = id;
   }
   final int? number = jsonConvert.convert<int>(json['number']);
   if (number != null) {
-    lotteryTicketLotterieDtoTickets.number = number;
+    lotteryTicketTickets.number = number;
+  }
+  final dynamic lotterie = json['lotterie'];
+  if (lotterie != null) {
+    lotteryTicketTickets.lotterie = lotterie;
   }
   final double? price = jsonConvert.convert<double>(json['price']);
   if (price != null) {
-    lotteryTicketLotterieDtoTickets.price = price;
+    lotteryTicketTickets.price = price;
   }
   final String? status = jsonConvert.convert<String>(json['status']);
   if (status != null) {
-    lotteryTicketLotterieDtoTickets.status = status;
+    lotteryTicketTickets.status = status;
   }
   final bool? winner = jsonConvert.convert<bool>(json['winner']);
   if (winner != null) {
-    lotteryTicketLotterieDtoTickets.winner = winner;
+    lotteryTicketTickets.winner = winner;
   }
-  return lotteryTicketLotterieDtoTickets;
+  return lotteryTicketTickets;
 }
 
-Map<String, dynamic> $LotteryTicketLotterieDtoTicketsToJson(
-    LotteryTicketLotterieDtoTickets entity) {
+Map<String, dynamic> $LotteryTicketTicketsToJson(LotteryTicketTickets entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['id'] = entity.id;
   data['number'] = entity.number;
+  data['lotterie'] = entity.lotterie;
   data['price'] = entity.price;
   data['status'] = entity.status;
   data['winner'] = entity.winner;
   return data;
 }
 
-extension LotteryTicketLotterieDtoTicketsExtension on LotteryTicketLotterieDtoTickets {
-  LotteryTicketLotterieDtoTickets copyWith({
+extension LotteryTicketTicketsExtension on LotteryTicketTickets {
+  LotteryTicketTickets copyWith({
     String? id,
     int? number,
+    dynamic lotterie,
     double? price,
     String? status,
     bool? winner,
   }) {
-    return LotteryTicketLotterieDtoTickets()
+    return LotteryTicketTickets()
       ..id = id ?? this.id
       ..number = number ?? this.number
+      ..lotterie = lotterie ?? this.lotterie
       ..price = price ?? this.price
       ..status = status ?? this.status
       ..winner = winner ?? this.winner;

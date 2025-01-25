@@ -23,9 +23,9 @@ LotteryEntity $LotteryEntityFromJson(Map<String, dynamic> json) {
   if (admin != null) {
     lotteryEntity.admin = admin;
   }
-  final double? appPrize = jsonConvert.convert<double>(json['appPrize']);
-  if (appPrize != null) {
-    lotteryEntity.appPrize = appPrize;
+  final double? cashPrize = jsonConvert.convert<double>(json['cashPrize']);
+  if (cashPrize != null) {
+    lotteryEntity.cashPrize = cashPrize;
   }
   final String? status = jsonConvert.convert<String>(json['status']);
   if (status != null) {
@@ -52,7 +52,7 @@ Map<String, dynamic> $LotteryEntityToJson(LotteryEntity entity) {
   data['startedDate'] = entity.startedDate;
   data['endDate'] = entity.endDate;
   data['admin'] = entity.admin?.toJson();
-  data['appPrize'] = entity.appPrize;
+  data['cashPrize'] = entity.cashPrize;
   data['status'] = entity.status;
   data['hour'] = entity.hour;
   data['tickets'] = entity.tickets?.map((v) => v.toJson()).toList();
@@ -66,7 +66,7 @@ extension LotteryEntityExtension on LotteryEntity {
     String? startedDate,
     String? endDate,
     LotteryAdmin? admin,
-    double? appPrize,
+    double? cashPrize,
     String? status,
     String? hour,
     List<LotteryTickets>? tickets,
@@ -77,7 +77,7 @@ extension LotteryEntityExtension on LotteryEntity {
       ..startedDate = startedDate ?? this.startedDate
       ..endDate = endDate ?? this.endDate
       ..admin = admin ?? this.admin
-      ..appPrize = appPrize ?? this.appPrize
+      ..cashPrize = cashPrize ?? this.cashPrize
       ..status = status ?? this.status
       ..hour = hour ?? this.hour
       ..tickets = tickets ?? this.tickets;

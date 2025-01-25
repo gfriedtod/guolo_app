@@ -5,7 +5,9 @@ import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:guolo_app/material/colors.dart';
 import 'package:guolo_app/pages/home_page/home_page.dart';
 import 'package:guolo_app/pages/create_account_page/create_account_page.dart';
@@ -34,8 +36,14 @@ void main() async {
   ]);
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   FlutterNativeSplash.remove();
-  await initLocalStorage();; // Initialize GetStorage
+  await initLocalStorage();
+  ; // Initialize GetStorage
+  //Assign publishable key to flutter_stripe
+  Stripe.publishableKey =
+      "pk_test_51Qk3wY6kIjqqcqePLoVo8eBERFkhxnwdK7WCsSBhKlq1LFDuGb0gvYIzDCjeSDIeejmVflCR3cbKvOwIkT3U73EB00YrJtv8ta";
 
+  //Load our .env file that contains our Stripe Secret key
+  await dotenv.load(fileName: "assets/env/.env");
   runApp(MyApp());
 }
 
@@ -43,8 +51,7 @@ class MyApp extends StatelessWidget {
   final Dio dio = Dio();
   MyApp({super.key});
 
-  Widget _determineInitialScreen()  {
-
+  Widget _determineInitialScreen() {
     try {
       String? token = localStorage.getItem('token');
       String? userJson = localStorage.getItem('user');
@@ -57,7 +64,7 @@ class MyApp extends StatelessWidget {
       // Vérifier l'expiration du token
       if (JwtDecoder.isExpired(token)) {
         localStorage.clear();
-        return HomePageView();
+        return LoginPageView();
       }
 
       // Configurer l'en-tête du token pour Dio
@@ -66,14 +73,12 @@ class MyApp extends StatelessWidget {
       // Si l'utilisateur est stocké, aller à la page d'accueil
       User user = User.fromJson(json.decode(userJson));
       return HomePageView();
-
     } catch (e) {
       print('Une erreur s’est produite lors du traitement du token: $e');
 
       return HomePageView();
     }
   }
-
 
   // This widget is the root of your application.
   @override
@@ -84,22 +89,22 @@ class MyApp extends StatelessWidget {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': 'true',
         'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods':
-        'GET,PUT,POST,DELETE'
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
       },
     );
     dio.options = options;
     final LotterieRepository lotteryRepository = LotterieRepository(dio: dio);
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider(create: (context)=> TicketRepository(dio: dio))
+        RepositoryProvider(create: (context) => TicketRepository(dio: dio)),
+        RepositoryProvider(create: (context) => dio)
       ],
       child: MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => AuthenticationBloc(dio)),
             BlocProvider(
-                create: (context) =>
-                    LotteryBloc(lotteryRepository)..add(LotteryEvent.started())),
+                create: (context) => LotteryBloc(lotteryRepository)
+                  ..add(LotteryEvent.started())),
           ],
           child: MaterialApp(
               debugShowCheckedModeBanner: false,
@@ -152,6 +157,3 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 }
-
-
-

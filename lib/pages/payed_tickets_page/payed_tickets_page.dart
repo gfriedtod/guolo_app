@@ -1,8 +1,11 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
+import 'package:flutter_stripe/flutter_stripe.dart' as stripe;
 import 'package:guolo_app/components/button_component.dart';
 import 'package:guolo_app/components/common_scaffold.dart';
 import 'package:guolo_app/components/loto_info_component.dart';
@@ -14,10 +17,48 @@ import 'package:guolo_app/pages/tickets_list_page/tickets_list_page.dart';
 import 'package:guolo_app/pages/view_result_details/view_result_details.dart';
 import 'package:guolo_app/repositorys/ticket_repository.dart';
 import 'package:guolo_app/services/ticket/ticket_bloc.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/lottery_entity.dart';
 import '../../models/user.dart';
+
+createPaymentIntent(String amount, String currency) async {
+  try {
+    //Request body
+    Map<String, dynamic> body = {
+      'amount': amount,
+      'currency': currency,
+    };
+
+    Dio dio = Dio();
+    dio.options = BaseOptions(
+      headers: {
+        'Authorization': 'Bearer ${dotenv.env['SECRET_KEY']}',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
+      },
+    );
+    //Make post request to Stripe
+    var response =
+        await dio.post('https://api.stripe.com/v1/payment_intents', data: body);
+    var data = response.data;
+    data['created'] = data['created'].toString();
+    return response.data;
+  } catch (err, trace) {
+    print(trace);
+    throw Exception(err.toString());
+  }
+}
+
+displayPaymentSheet(context, tickets) async {
+  try {} catch (e) {
+    print('$e');
+  }
+}
 
 class ParieTypeOb {
   String type;
@@ -95,12 +136,39 @@ class PayedTicketPage extends StatelessWidget {
                           Navigator.of(context)
                               .pushReplacement(MaterialPageRoute(
                                   builder: (context) => CommonScaffold(
-                                        body: TicketsListPageView(tickets: val,),
+                                        body: TicketsListPageView(
+                                          tickets: val,
+                                        ),
                                         index: 1,
                                       )));
                         });
                   },
                   builder: (context, state) {
+                    Future<void> makePayment(context, amount) async {
+                      try {
+                        //STEP 1: Create Payment Intent
+                        var paymentIntent =
+                            await createPaymentIntent(amount, 'XAF');
+                        print('passed');
+                        //STEP 2: Initialize Payment Sheet
+                        await stripe.Stripe.instance
+                            .initPaymentSheet(
+                                paymentSheetParameters:
+                                    stripe.SetupPaymentSheetParameters(
+                                        paymentIntentClientSecret:
+                                            paymentIntent['client_secret'],
+                                        style: ThemeMode.light,
+                                        merchantDisplayName: 'GUOLO'))
+                            .then((value) {});
+
+                        //STEP 3: Display Payment sheet
+                        displayPaymentSheet(context, tickets);
+                      } catch (err, trace) {
+                        print(trace);
+                        throw err;
+                      }
+                    }
+
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: SizedBox(
@@ -121,17 +189,67 @@ class PayedTicketPage extends StatelessWidget {
                                   height: 40,
                                   title: 'Payer',
                                   onPressed: () async {
-                                    SharedPreferences pref =
-                                        await SharedPreferences.getInstance();
-                                    print(pref.getString('user'));
-                                    User? user = User.fromJson(JsonDecoder()
-                                        .convert(pref.getString('user')!));
-                                    print(user);
-                                    BuyTicket buyTicket = BuyTicket(
-                                        user: user, ticketEntitys: tickets);
-                                    context
-                                        .read<TicketBloc>()
-                                        .add(TicketEvent.buyTicket(buyTicket));
+                                    int amount = 0;
+                                    amount = tickets.length *
+                                        tickets.first.price!.toInt();
+                                    print(tickets.first.price);
+                                    await makePayment(
+                                        context, amount.toString());
+
+                                    try {
+                                      await stripe.Stripe.instance
+                                          .presentPaymentSheet()
+                                          .then((value) {
+                                        User user = User.fromJson(JsonDecoder()
+                                            .convert(
+                                            localStorage.getItem('user')!));
+                                        BuyTicket buyTicket = BuyTicket(
+                                            user: user, ticketEntitys: tickets);
+                                        context.read<TicketBloc>().add(
+                                            TicketEvent.buyTicket(buyTicket));
+                                        showDialog(
+                                            context: context,
+                                            builder: (_) => AlertDialog(
+                                                  content: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: const [
+                                                      Icon(
+                                                        Icons.check_circle,
+                                                        color: Colors.green,
+                                                        size: 100.0,
+                                                      ),
+                                                      SizedBox(height: 10.0),
+                                                      Text(
+                                                          "Payment Successful!"),
+                                                    ],
+                                                  ),
+                                                ));
+
+                                        stripe.PaymentIntent? paymentIntent =
+                                            null;
+                                      }).onError((error, stackTrace) {
+                                        throw Exception(error);
+                                      });
+                                    } on stripe.StripeException catch (e) {
+                                      print('Error is:---> $e');
+                                      AlertDialog(
+                                        content: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Row(
+                                              children: const [
+                                                Icon(
+                                                  Icons.cancel,
+                                                  color: Colors.red,
+                                                ),
+                                                Text("Payment Failed"),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
                                   },
                                 ),
                                 loading: () => ButtonComponentView(

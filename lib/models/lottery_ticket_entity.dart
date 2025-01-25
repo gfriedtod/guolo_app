@@ -6,6 +6,7 @@ export 'package:guolo_app/generated/json/lottery_ticket_entity.g.dart';
 @JsonSerializable()
 class LotteryTicketEntity {
 	LotteryTicketLotterieDto? lotterieDto;
+	List<LotteryTicketTickets>? tickets;
 
 	LotteryTicketEntity();
 
@@ -21,7 +22,7 @@ class LotteryTicketEntity {
 
 @JsonSerializable()
 class LotteryTicketLotterieDto {
-	String? id;
+	dynamic id;
 	String? name;
 	String? startedDate;
 	String? endDate;
@@ -29,7 +30,7 @@ class LotteryTicketLotterieDto {
 	double? cashPrize;
 	String? status;
 	dynamic hour;
-	List<LotteryTicketLotterieDtoTickets>? tickets;
+	dynamic tickets;
 
 	LotteryTicketLotterieDto();
 
@@ -65,18 +66,19 @@ class LotteryTicketLotterieDtoAdmin {
 }
 
 @JsonSerializable()
-class LotteryTicketLotterieDtoTickets {
+class LotteryTicketTickets {
 	String? id;
 	int? number;
+	dynamic lotterie;
 	double? price;
 	String? status;
 	bool? winner;
 
-	LotteryTicketLotterieDtoTickets();
+	LotteryTicketTickets();
 
-	factory LotteryTicketLotterieDtoTickets.fromJson(Map<String, dynamic> json) => $LotteryTicketLotterieDtoTicketsFromJson(json);
+	factory LotteryTicketTickets.fromJson(Map<String, dynamic> json) => $LotteryTicketTicketsFromJson(json);
 
-	Map<String, dynamic> toJson() => $LotteryTicketLotterieDtoTicketsToJson(this);
+	Map<String, dynamic> toJson() => $LotteryTicketTicketsToJson(this);
 
 	@override
 	String toString() {

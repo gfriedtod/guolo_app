@@ -15,7 +15,7 @@ class LotoInfoView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
          Text(
-          '${lotteryEntity.appPrize } FCFA',
+          '${lotteryEntity.cashPrize } FCFA',
           style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.w800,

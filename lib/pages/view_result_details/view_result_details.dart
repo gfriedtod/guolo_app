@@ -107,7 +107,7 @@ class _Ticket extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.brown,
                                 fontWeight: FontWeight.bold)),
-                        Text('${tickets[0].lotterie?.appPrize} FCFA',
+                        Text('${tickets[0].lotterie?.cashPrize} FCFA',
                             style: TextStyle(
                                 color: Colors.brown,
                                 fontWeight: FontWeight.bold)),

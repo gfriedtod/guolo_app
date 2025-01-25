@@ -10,7 +10,7 @@ class LotteryEntity {
 	String? startedDate;
 	String? endDate;
 	LotteryAdmin? admin;
-	double? appPrize;
+	double? cashPrize;
 	String? status;
 	String? hour;
 	List<LotteryTickets>? tickets;

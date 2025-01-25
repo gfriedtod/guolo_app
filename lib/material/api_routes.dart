@@ -3,12 +3,17 @@ import 'package:guolo_app/models/buy_ticket.dart';
 class ApiRoute {
   static CurrentRoute currentRoute = CurrentRoute.login;
   static String getApiRoute(String route) {
-    return "https://guolo-api.onrender.com/$route";
+    return "http://192.168.112.164:8080/$route";
   }
 
   static String login() {
     currentRoute = CurrentRoute.login;
     return ApiRoute.getApiRoute("api/auth/login/user");
+  }
+
+  static String update() {
+    currentRoute = CurrentRoute.update;
+    return ApiRoute.getApiRoute("api/auth/update");
   }
 
   static String signup() {
@@ -65,5 +70,5 @@ enum CurrentRoute {
   fetchTicketsByLottery,
   verified,
   sendOtp,
-  getATicket, buyTicket, story
+  getATicket, buyTicket, story, update
 }

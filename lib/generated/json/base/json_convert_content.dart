@@ -168,10 +168,9 @@ class JsonConvert {
       return data.map<LotteryTicketLotterieDtoAdmin>((Map<String, dynamic> e) =>
           LotteryTicketLotterieDtoAdmin.fromJson(e)).toList() as M;
     }
-    if (<LotteryTicketLotterieDtoTickets>[] is M) {
-      return data.map<LotteryTicketLotterieDtoTickets>((
-          Map<String, dynamic> e) =>
-          LotteryTicketLotterieDtoTickets.fromJson(e)).toList() as M;
+    if (<LotteryTicketTickets>[] is M) {
+      return data.map<LotteryTicketTickets>((Map<String, dynamic> e) =>
+          LotteryTicketTickets.fromJson(e)).toList() as M;
     }
     if (<TicketEntity>[] is M) {
       return data.map<TicketEntity>((Map<String, dynamic> e) =>
@@ -213,8 +212,7 @@ class JsonConvertClassCollection {
     (LotteryTicketLotterieDto).toString(): LotteryTicketLotterieDto.fromJson,
     (LotteryTicketLotterieDtoAdmin).toString(): LotteryTicketLotterieDtoAdmin
         .fromJson,
-    (LotteryTicketLotterieDtoTickets)
-        .toString(): LotteryTicketLotterieDtoTickets.fromJson,
+    (LotteryTicketTickets).toString(): LotteryTicketTickets.fromJson,
     (TicketEntity).toString(): TicketEntity.fromJson,
     (TicketLotterie).toString(): TicketLotterie.fromJson,
     (TicketLotterieAdmin).toString(): TicketLotterieAdmin.fromJson,

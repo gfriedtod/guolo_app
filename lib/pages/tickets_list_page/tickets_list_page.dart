@@ -18,38 +18,40 @@ class TicketsListPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return SingleChildScrollView(
-      child: Center(
-        child: BlocProvider(
-          create: (context) => TicketBloc(
-              ticketRepository:
-                  RepositoryProvider.of<TicketRepository>(context))..add(TicketEvent.fetchStory()),
-          child: BlocConsumer<TicketBloc, TicketState>(
-            listener: (context, state) {
-              // TODO: implement listener
-            },
-            builder: (context, state) {
-              return RefreshIndicator(
-                onRefresh: () async {
-                  context.read<TicketBloc>().add(TicketEvent.fetchStory());
-                },
-                child: state.maybeWhen(
+    return BlocProvider(
+      create: (context) => TicketBloc(
+          ticketRepository:
+              RepositoryProvider.of<TicketRepository>(context))
+        ..add(TicketEvent.fetchStory()),
+      child: RefreshIndicator(
+        onRefresh: ()  async {
+          context.read<TicketBloc>().add(TicketEvent.fetchStory());
+
+        },
+        child: SingleChildScrollView(
+          child: Center(
+            child: BlocConsumer<TicketBloc, TicketState>(
+              listener: (context, state) {
+                // TODO: implement listener
+              },
+              builder: (context, state) {
+                return state.maybeWhen(
                     orElse: () => SizedBox.shrink(),
                     loading: () => SizedBox(
-                      height: size.height*0.7,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Center(
+                          height: size.height * 0.7,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Center(
                                 child: SizedBox(
                                   width: 30,
                                   height: 30,
                                   child: CircularProgressIndicator(),
                                 ),
                               ),
-                        ],
-                      ),
-                    ),
+                            ],
+                          ),
+                        ),
                     successStory: (val) => SizedBox(
                           width: size.width * 0.9,
                           // height: size.height*0.9,
@@ -96,9 +98,9 @@ class TicketsListPageView extends StatelessWidget {
                               style: TextStyle(color: Colors.white),
                             )
                           ],
-                        )),
-              );
-            },
+                        ));
+              },
+            ),
           ),
         ),
       ),
@@ -115,6 +117,21 @@ class _OldTicket extends StatelessWidget {
   final Size size;
   final LotteryTicketEntity tickets;
 
+  Widget winner(){
+    switch(tickets.lotterieDto?.status){
+      case 'created':
+        return Text("en cours",style: TextStyle(fontWeight: FontWeight.bold,color: GuoloColors.primaryColor));
+      case 'ended':
+        for(int i = 0; i < tickets.tickets!.length; i++){
+          if(tickets.tickets![i].winner == true){
+            return Flexible(child: Text("felicitation 😊", style: TextStyle(fontWeight: FontWeight.bold,color: GuoloColors.primaryColor),));
+          }
+        }
+        return Text("vous avez perdu 😓", style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red));
+      default:
+        return Text("en cours", style: TextStyle(fontWeight: FontWeight.bold,color: GuoloColors.primaryColor));
+    }
+  }
   @override
   Widget build(BuildContext context) {
     print(tickets);
@@ -130,23 +147,23 @@ class _OldTicket extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // Text(
-                        //   'vous avez gagnez',
-                        //   style: TextStyle(
-                        //       fontWeight: FontWeight.bold,
-                        //       color: GuoloColors.primaryColor),
-                        // ),
+                        winner(),
                         Row(
                           children: [
-                            Icon(
-                              LucideIcons.calendar,
-                              weight: 4,
-                            ),
-                            SizedBox(width: 10,),
-                            Text(
-                              '${tickets.lotterieDto?.startedDate!}',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
+                            Wrap(children: [
+                              Icon(
+                                LucideIcons.calendar,
+                                weight: 4,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                '${tickets.lotterieDto?.startedDate!}',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )
+                              ,
+                            ]),
                           ],
                         ),
                       ],
@@ -167,7 +184,7 @@ class _OldTicket extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.brown,
                                 fontWeight: FontWeight.bold)),
-                        Text('${tickets.lotterieDto!.tickets?[0].price} FCFA',
+                        Text('${tickets.tickets?[0].price} FCFA',
                             style: TextStyle(
                                 color: GuoloColors.primaryColor,
                                 fontWeight: FontWeight.bold)),
@@ -180,7 +197,7 @@ class _OldTicket extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.brown,
                                 fontWeight: FontWeight.bold)),
-                        Text('${tickets.lotterieDto?.appPrize} FCFA',
+                        Text('${tickets.lotterieDto?.cashPrize} FCFA',
                             style: TextStyle(
                                 color: Colors.brown,
                                 fontWeight: FontWeight.bold)),
@@ -199,18 +216,18 @@ class _OldTicket extends StatelessWidget {
                       child: LayoutBuilder(builder: (context, cons) {
                         return SizedBox(
                             height: size.height * 0.07,
+                            width: double.infinity,
                             child: SingleChildScrollView(
-                              child: Wrap(spacing: 4, runSpacing: 5, children: [
+                              child: Wrap(spacing: 1, runSpacing: 5, children: [
                                 for (int i = 0;
                                     i < tickets.tickets!.length;
                                     i++)
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: ResultBadge(
-                                      value: tickets
-                                          .tickets![i].number
-                                          .toString(),
-                                      win: false,
+                                      value:
+                                          tickets.tickets![i].number.toString(),
+                                      win: tickets.tickets![i].winner!,
                                     ),
                                   )
                               ]),

@@ -23,6 +23,7 @@ mixin _$AuthenticationEvent {
     required TResult Function(User user) startedRegister,
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
+    required TResult Function(User user) updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$AuthenticationEvent {
     TResult? Function(User user)? startedRegister,
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
+    TResult? Function(User user)? updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$AuthenticationEvent {
     TResult Function(User user)? startedRegister,
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
+    TResult Function(User user)? updateUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$AuthenticationEvent {
     required TResult Function(_StartedRegister value) startedRegister,
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_UpdateUser value) updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$AuthenticationEvent {
     TResult? Function(_StartedRegister value)? startedRegister,
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_UpdateUser value)? updateUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$AuthenticationEvent {
     TResult Function(_StartedRegister value)? startedRegister,
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_UpdateUser value)? updateUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,6 +96,9 @@ class _$AuthenticationEventCopyWithImpl<$Res, $Val extends AuthenticationEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -109,6 +118,8 @@ class __$$StartedImplCopyWithImpl<$Res>
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +158,9 @@ class _$StartedImpl implements _Started {
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
@@ -161,6 +174,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(User user) startedRegister,
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
+    required TResult Function(User user) updateUser,
   }) {
     return startedLogin(user);
   }
@@ -173,6 +187,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(User user)? startedRegister,
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
+    TResult? Function(User user)? updateUser,
   }) {
     return startedLogin?.call(user);
   }
@@ -185,6 +200,7 @@ class _$StartedImpl implements _Started {
     TResult Function(User user)? startedRegister,
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
+    TResult Function(User user)? updateUser,
     required TResult orElse(),
   }) {
     if (startedLogin != null) {
@@ -201,6 +217,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_StartedRegister value) startedRegister,
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_UpdateUser value) updateUser,
   }) {
     return startedLogin(this);
   }
@@ -213,6 +230,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_StartedRegister value)? startedRegister,
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_UpdateUser value)? updateUser,
   }) {
     return startedLogin?.call(this);
   }
@@ -225,6 +243,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_StartedRegister value)? startedRegister,
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_UpdateUser value)? updateUser,
     required TResult orElse(),
   }) {
     if (startedLogin != null) {
@@ -238,7 +257,10 @@ abstract class _Started implements AuthenticationEvent {
   const factory _Started(final User user) = _$StartedImpl;
 
   User get user;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -260,6 +282,8 @@ class __$$StartedLogoutImplCopyWithImpl<$Res>
       _$StartedLogoutImpl _value, $Res Function(_$StartedLogoutImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -298,7 +322,9 @@ class _$StartedLogoutImpl implements _StartedLogout {
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StartedLogoutImplCopyWith<_$StartedLogoutImpl> get copyWith =>
@@ -312,6 +338,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     required TResult Function(User user) startedRegister,
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
+    required TResult Function(User user) updateUser,
   }) {
     return startedLogout(user);
   }
@@ -324,6 +351,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     TResult? Function(User user)? startedRegister,
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
+    TResult? Function(User user)? updateUser,
   }) {
     return startedLogout?.call(user);
   }
@@ -336,6 +364,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     TResult Function(User user)? startedRegister,
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
+    TResult Function(User user)? updateUser,
     required TResult orElse(),
   }) {
     if (startedLogout != null) {
@@ -352,6 +381,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     required TResult Function(_StartedRegister value) startedRegister,
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_UpdateUser value) updateUser,
   }) {
     return startedLogout(this);
   }
@@ -364,6 +394,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     TResult? Function(_StartedRegister value)? startedRegister,
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_UpdateUser value)? updateUser,
   }) {
     return startedLogout?.call(this);
   }
@@ -376,6 +407,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     TResult Function(_StartedRegister value)? startedRegister,
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_UpdateUser value)? updateUser,
     required TResult orElse(),
   }) {
     if (startedLogout != null) {
@@ -389,7 +421,10 @@ abstract class _StartedLogout implements AuthenticationEvent {
   const factory _StartedLogout(final User user) = _$StartedLogoutImpl;
 
   User get user;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StartedLogoutImplCopyWith<_$StartedLogoutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -411,6 +446,8 @@ class __$$StartedRegisterImplCopyWithImpl<$Res>
       _$StartedRegisterImpl _value, $Res Function(_$StartedRegisterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -449,7 +486,9 @@ class _$StartedRegisterImpl implements _StartedRegister {
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StartedRegisterImplCopyWith<_$StartedRegisterImpl> get copyWith =>
@@ -464,6 +503,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     required TResult Function(User user) startedRegister,
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
+    required TResult Function(User user) updateUser,
   }) {
     return startedRegister(user);
   }
@@ -476,6 +516,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     TResult? Function(User user)? startedRegister,
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
+    TResult? Function(User user)? updateUser,
   }) {
     return startedRegister?.call(user);
   }
@@ -488,6 +529,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     TResult Function(User user)? startedRegister,
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
+    TResult Function(User user)? updateUser,
     required TResult orElse(),
   }) {
     if (startedRegister != null) {
@@ -504,6 +546,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     required TResult Function(_StartedRegister value) startedRegister,
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_UpdateUser value) updateUser,
   }) {
     return startedRegister(this);
   }
@@ -516,6 +559,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     TResult? Function(_StartedRegister value)? startedRegister,
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_UpdateUser value)? updateUser,
   }) {
     return startedRegister?.call(this);
   }
@@ -528,6 +572,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     TResult Function(_StartedRegister value)? startedRegister,
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_UpdateUser value)? updateUser,
     required TResult orElse(),
   }) {
     if (startedRegister != null) {
@@ -541,7 +586,10 @@ abstract class _StartedRegister implements AuthenticationEvent {
   const factory _StartedRegister(final User user) = _$StartedRegisterImpl;
 
   User get user;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StartedRegisterImplCopyWith<_$StartedRegisterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -563,6 +611,8 @@ class __$$StartedVerifiedImplCopyWithImpl<$Res>
       _$StartedVerifiedImpl _value, $Res Function(_$StartedVerifiedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -602,7 +652,9 @@ class _$StartedVerifiedImpl implements _StartedVerified {
   @override
   int get hashCode => Object.hash(runtimeType, emailVerified);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StartedVerifiedImplCopyWith<_$StartedVerifiedImpl> get copyWith =>
@@ -617,6 +669,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     required TResult Function(User user) startedRegister,
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
+    required TResult Function(User user) updateUser,
   }) {
     return startedVerified(emailVerified);
   }
@@ -629,6 +682,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     TResult? Function(User user)? startedRegister,
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
+    TResult? Function(User user)? updateUser,
   }) {
     return startedVerified?.call(emailVerified);
   }
@@ -641,6 +695,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     TResult Function(User user)? startedRegister,
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
+    TResult Function(User user)? updateUser,
     required TResult orElse(),
   }) {
     if (startedVerified != null) {
@@ -657,6 +712,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     required TResult Function(_StartedRegister value) startedRegister,
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_UpdateUser value) updateUser,
   }) {
     return startedVerified(this);
   }
@@ -669,6 +725,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     TResult? Function(_StartedRegister value)? startedRegister,
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_UpdateUser value)? updateUser,
   }) {
     return startedVerified?.call(this);
   }
@@ -681,6 +738,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     TResult Function(_StartedRegister value)? startedRegister,
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_UpdateUser value)? updateUser,
     required TResult orElse(),
   }) {
     if (startedVerified != null) {
@@ -695,7 +753,10 @@ abstract class _StartedVerified implements AuthenticationEvent {
       _$StartedVerifiedImpl;
 
   EmailVerified get emailVerified;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StartedVerifiedImplCopyWith<_$StartedVerifiedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -717,6 +778,8 @@ class __$$SendOtpImplCopyWithImpl<$Res>
       _$SendOtpImpl _value, $Res Function(_$SendOtpImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -755,7 +818,9 @@ class _$SendOtpImpl implements _SendOtp {
   @override
   int get hashCode => Object.hash(runtimeType, email);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SendOtpImplCopyWith<_$SendOtpImpl> get copyWith =>
@@ -769,6 +834,7 @@ class _$SendOtpImpl implements _SendOtp {
     required TResult Function(User user) startedRegister,
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
+    required TResult Function(User user) updateUser,
   }) {
     return sendOtp(email);
   }
@@ -781,6 +847,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult? Function(User user)? startedRegister,
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
+    TResult? Function(User user)? updateUser,
   }) {
     return sendOtp?.call(email);
   }
@@ -793,6 +860,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult Function(User user)? startedRegister,
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
+    TResult Function(User user)? updateUser,
     required TResult orElse(),
   }) {
     if (sendOtp != null) {
@@ -809,6 +877,7 @@ class _$SendOtpImpl implements _SendOtp {
     required TResult Function(_StartedRegister value) startedRegister,
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_UpdateUser value) updateUser,
   }) {
     return sendOtp(this);
   }
@@ -821,6 +890,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult? Function(_StartedRegister value)? startedRegister,
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_UpdateUser value)? updateUser,
   }) {
     return sendOtp?.call(this);
   }
@@ -833,6 +903,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult Function(_StartedRegister value)? startedRegister,
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_UpdateUser value)? updateUser,
     required TResult orElse(),
   }) {
     if (sendOtp != null) {
@@ -846,8 +917,175 @@ abstract class _SendOtp implements AuthenticationEvent {
   const factory _SendOtp(final String email) = _$SendOtpImpl;
 
   String get email;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SendOtpImplCopyWith<_$SendOtpImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateUserImplCopyWith<$Res> {
+  factory _$$UpdateUserImplCopyWith(
+          _$UpdateUserImpl value, $Res Function(_$UpdateUserImpl) then) =
+      __$$UpdateUserImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({User user});
+}
+
+/// @nodoc
+class __$$UpdateUserImplCopyWithImpl<$Res>
+    extends _$AuthenticationEventCopyWithImpl<$Res, _$UpdateUserImpl>
+    implements _$$UpdateUserImplCopyWith<$Res> {
+  __$$UpdateUserImplCopyWithImpl(
+      _$UpdateUserImpl _value, $Res Function(_$UpdateUserImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$UpdateUserImpl(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUserImpl implements _UpdateUser {
+  const _$UpdateUserImpl(this.user);
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'AuthenticationEvent.updateUser(user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUserImpl &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUserImplCopyWith<_$UpdateUserImpl> get copyWith =>
+      __$$UpdateUserImplCopyWithImpl<_$UpdateUserImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(User user) startedLogin,
+    required TResult Function(User user) startedLogout,
+    required TResult Function(User user) startedRegister,
+    required TResult Function(EmailVerified emailVerified) startedVerified,
+    required TResult Function(String email) sendOtp,
+    required TResult Function(User user) updateUser,
+  }) {
+    return updateUser(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(User user)? startedLogin,
+    TResult? Function(User user)? startedLogout,
+    TResult? Function(User user)? startedRegister,
+    TResult? Function(EmailVerified emailVerified)? startedVerified,
+    TResult? Function(String email)? sendOtp,
+    TResult? Function(User user)? updateUser,
+  }) {
+    return updateUser?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User user)? startedLogin,
+    TResult Function(User user)? startedLogout,
+    TResult Function(User user)? startedRegister,
+    TResult Function(EmailVerified emailVerified)? startedVerified,
+    TResult Function(String email)? sendOtp,
+    TResult Function(User user)? updateUser,
+    required TResult orElse(),
+  }) {
+    if (updateUser != null) {
+      return updateUser(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) startedLogin,
+    required TResult Function(_StartedLogout value) startedLogout,
+    required TResult Function(_StartedRegister value) startedRegister,
+    required TResult Function(_StartedVerified value) startedVerified,
+    required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_UpdateUser value) updateUser,
+  }) {
+    return updateUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? startedLogin,
+    TResult? Function(_StartedLogout value)? startedLogout,
+    TResult? Function(_StartedRegister value)? startedRegister,
+    TResult? Function(_StartedVerified value)? startedVerified,
+    TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_UpdateUser value)? updateUser,
+  }) {
+    return updateUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? startedLogin,
+    TResult Function(_StartedLogout value)? startedLogout,
+    TResult Function(_StartedRegister value)? startedRegister,
+    TResult Function(_StartedVerified value)? startedVerified,
+    TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_UpdateUser value)? updateUser,
+    required TResult orElse(),
+  }) {
+    if (updateUser != null) {
+      return updateUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateUser implements AuthenticationEvent {
+  const factory _UpdateUser(final User user) = _$UpdateUserImpl;
+
+  User get user;
+
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateUserImplCopyWith<_$UpdateUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -957,6 +1195,9 @@ class _$AuthenticationStateCopyWithImpl<$Res, $Val extends AuthenticationState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -973,6 +1214,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1123,6 +1367,9 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
   __$$AuthenticatedImplCopyWithImpl(
       _$AuthenticatedImpl _value, $Res Function(_$AuthenticatedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1273,6 +1520,9 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
   __$$UnauthenticatedImplCopyWithImpl(
       _$UnauthenticatedImpl _value, $Res Function(_$UnauthenticatedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1423,6 +1673,9 @@ class __$$RegisterImplCopyWithImpl<$Res>
   __$$RegisterImplCopyWithImpl(
       _$RegisterImpl _value, $Res Function(_$RegisterImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1573,6 +1826,9 @@ class __$$VerifiedImplCopyWithImpl<$Res>
   __$$VerifiedImplCopyWithImpl(
       _$VerifiedImpl _value, $Res Function(_$VerifiedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1723,6 +1979,9 @@ class __$$UnknownImplCopyWithImpl<$Res>
   __$$UnknownImplCopyWithImpl(
       _$UnknownImpl _value, $Res Function(_$UnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1873,6 +2132,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2023,6 +2285,9 @@ class __$$ExistedEmailImplCopyWithImpl<$Res>
   __$$ExistedEmailImplCopyWithImpl(
       _$ExistedEmailImpl _value, $Res Function(_$ExistedEmailImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2176,6 +2441,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2214,7 +2481,9 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -2335,7 +2604,10 @@ abstract class _Error implements AuthenticationState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2354,6 +2626,9 @@ class __$$OtpSendImplCopyWithImpl<$Res>
   __$$OtpSendImplCopyWithImpl(
       _$OtpSendImpl _value, $Res Function(_$OtpSendImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -15,34 +15,29 @@ class GamePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        SizedBox(
-          height: size.height * 0.05,
-        ),
-        SizedBox(
-          height: size.height * 0.72,
-          child: BlocConsumer<LotteryBloc, LotteryState>(
-            listener: (context, state) {
-              state.map(
-                  initial: (_) {},
-                  loading: (_) {},
-                  error: (value) {
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text(value.error)));
-                  },
-                  success: (_) {});
-            },
-            builder: (context, state) {
-              return RefreshIndicator(
-                onRefresh: () async {
-                  context.read<LotteryBloc>().add(LotteryEvent.started());
-                },
+    return BlocConsumer<LotteryBloc, LotteryState>(listener: (context, state) {
+      state.map(
+          initial: (_) {},
+          loading: (_) {},
+          error: (value) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(value.error)));
+          },
+          success: (_) {});
+    }, builder: (context, state) {
+      return RefreshIndicator(
+          onRefresh: () async {
+            context.read<LotteryBloc>().add(LotteryEvent.started());
+          },
+          child: SingleChildScrollView(
+            child: Column(children: [
+              SizedBox(
+                height: size.height * 0.05,
+              ),
+              SizedBox(
+                height: size.height * 0.72,
                 child: state.maybeWhen(
-                    success: (lotteries) =>
-
-
-                        ListView.builder(
+                    success: (lotteries) => ListView.builder(
                         itemCount: lotteries.length,
                         itemBuilder: (context, index) {
                           return PlayCard(
@@ -53,12 +48,10 @@ class GamePageView extends StatelessWidget {
                           child: CircularProgressIndicator(),
                         ),
                     orElse: () => SizedBox.shrink()),
-              );
-            },
-          ),
-        ),
-      ],
-    );
+              ),
+            ]),
+          ));
+    });
   }
 }
 
@@ -140,7 +133,7 @@ class PlayCard extends StatelessWidget {
               ],
             ),
             Text(
-              '${lotteryEntity.appPrize.toString()} FCFA',
+              '${lotteryEntity.cashPrize.toString()} FCFA',
               style: TextStyle(
                   letterSpacing: 3,
                   fontSize: 25,

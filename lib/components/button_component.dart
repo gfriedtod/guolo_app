@@ -47,18 +47,33 @@ class ButtonComponentView extends StatelessWidget {
           foregroundColor: (primary ?? true) ? Colors.white : Colors.black,
         ),
         onPressed: onPressed,
-        child: (loading ?? false)
-            ? SizedBox(
-                height: 20,
-                width: 20,
-                child: CircularProgressIndicator(
-                  strokeWidth: 4,
-                  color: (primary ?? true)
-                      ? Colors.white
-                      : GuoloColors.primaryColor,
-                ),
-              )
-            : _TitleView(image: image, title: title, primary: primary),
+        child:
+            FittedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  (loading ?? false)
+                      ? SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 4,
+                      color: (primary ?? true)
+                          ? Colors.white
+                          : GuoloColors.primaryColor,
+                    ),
+                  )
+                      : SizedBox.shrink(),
+                  (loading ?? false)?
+                  SizedBox(width: 10,):SizedBox.shrink(),
+              
+                  FittedBox(child: _TitleView(image: image, title: title, primary: primary)),
+                ],
+              ),
+            )
+
+
+
       ),
     );
   }

@@ -8,4 +8,6 @@ class AuthenticationEvent with _$AuthenticationEvent {
       _StartedRegister;
   const factory AuthenticationEvent.startedVerified(EmailVerified emailVerified) = _StartedVerified;
   const factory AuthenticationEvent.sendOtp(String email) = _SendOtp;
+
+  const factory AuthenticationEvent.updateUser(User user) = _UpdateUser;
 }

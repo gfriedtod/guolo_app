@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,12 +10,14 @@ import 'package:guolo_app/components/profile.dart';
 import 'package:guolo_app/components/simple_app_bar.dart';
 import 'package:guolo_app/material/colors.dart';
 import 'package:guolo_app/material/environement_path.dart';
+import 'package:guolo_app/models/user.dart';
 import 'package:guolo_app/pages/history_page/history_page.dart';
 import 'package:guolo_app/pages/game_page/game_page.dart';
 import 'package:guolo_app/pages/home_page/home_page.dart';
 import 'package:guolo_app/pages/profile_page/profile_page.dart';
 import 'package:guolo_app/pages/terms_and_condition_page/terms_and_condition_page.dart';
 import 'package:guolo_app/pages/tickets_list_page/tickets_list_page.dart';
+import 'package:localstorage/localstorage.dart';
 
 import '../pages/login_page/login_page.dart';
 
@@ -33,7 +37,9 @@ class _CommonScaffoldState extends State<CommonScaffold> {
   final List<Map<String, dynamic>> pages = [
     {'page': const GamePageView(), 'appBar': null},
     {
-      'page': const TicketsListPageView(tickets: [],),
+      'page': const TicketsListPageView(
+        tickets: [],
+      ),
       'appBar': SimpleAppBar(
         title: 'Mes Tickets',
         destination: HomePageView(),
@@ -61,6 +67,7 @@ class _CommonScaffoldState extends State<CommonScaffold> {
     super.initState();
     currentIndex = [widget.index ?? 0];
   }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -175,13 +182,13 @@ class _CommonScaffoldState extends State<CommonScaffold> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const Column(
+                                  Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Profile(),
                                       Text(
-                                        "Wayou G. wilfried",
+                                        "${User.fromJson(JsonDecoder().convert(localStorage.getItem('user')!)).lastname}",
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             color: Colors.white),
@@ -308,41 +315,41 @@ class _CommonScaffoldState extends State<CommonScaffold> {
                               label: 'Mes tickets',
                             ),
                           ),
-                          const ListTile(
-                            minVerticalPadding: 0,
-                            title: DrawerMenu(
-                              icon: Icon(
-                                LucideIcons.send_to_back,
-                                color: GuoloColors.primaryColor,
-                              ),
-                              label: 'Mes transactions',
-                            ),
-                          ),
-                          ListTile(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HistoryPage()));
-                            },
-                            minVerticalPadding: 0,
-                            title: const DrawerMenu(
-                              icon: Icon(
-                                LucideIcons.clock_3,
-                                color: GuoloColors.primaryColor,
-                              ),
-                              label: 'Mon historique',
-                            ),
-                          ),
-                          ListTile(
-                            minVerticalPadding: 0,
-                            title: DrawerMenu(
-                              icon: Bell(
-                                color: GuoloColors.primaryColor,
-                              ),
-                              label: 'Notification',
-                            ),
-                          ),
+                          // const ListTile(
+                          //   minVerticalPadding: 0,
+                          //   title: DrawerMenu(
+                          //     icon: Icon(
+                          //       LucideIcons.send_to_back,
+                          //       color: GuoloColors.primaryColor,
+                          //     ),
+                          //     label: 'Mes transactions',
+                          //   ),
+                          // ),
+                          // ListTile(
+                          //   onTap: () {
+                          //     Navigator.push(
+                          //         context,
+                          //         MaterialPageRoute(
+                          //             builder: (context) => HistoryPage()));
+                          //   },
+                          //   minVerticalPadding: 0,
+                          //   title: const DrawerMenu(
+                          //     icon: Icon(
+                          //       LucideIcons.clock_3,
+                          //       color: GuoloColors.primaryColor,
+                          //     ),
+                          //     label: 'Mon historique',
+                          //   ),
+                          // ),
+                          // ListTile(
+                          //   minVerticalPadding: 0,
+                          //   title: DrawerMenu(
+                          //     icon: Bell(
+                          //       color: GuoloColors.primaryColor,
+                          //     ),
+                          //     label: 'Notification',
+                          //   ),
+                          // ),
                         ],
                       )
                     : const SizedBox.shrink(),
@@ -368,6 +375,7 @@ class _CommonScaffoldState extends State<CommonScaffold> {
             SizedBox(
               height: size.height * 0.03,
             ),
+            Spacer(),
             Padding(
               padding: EdgeInsets.all(15.0),
               child: (!false)
