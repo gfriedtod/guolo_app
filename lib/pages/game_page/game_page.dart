@@ -15,6 +15,8 @@ class GamePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    context.read<LotteryBloc>().add(LotteryEvent.started());
+
     return BlocConsumer<LotteryBloc, LotteryState>(listener: (context, state) {
       state.map(
           initial: (_) {},
@@ -37,13 +39,34 @@ class GamePageView extends StatelessWidget {
               SizedBox(
                 height: size.height * 0.72,
                 child: state.maybeWhen(
-                    success: (lotteries) => ListView.builder(
+                    success: (lotteries) =>
+                        lotteries.length > 0 ?
+                        ListView.builder(
                         itemCount: lotteries.length,
                         itemBuilder: (context, index) {
                           return PlayCard(
                             lotteryEntity: lotteries[index],
                           );
-                        }),
+                        }) : SizedBox(
+                          width: double.infinity,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                  height: 300,
+                                  child: Image.asset(
+                                      'assets/images/illustration3.png')),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Aucune donnée trouvé",
+                                style: TextStyle(color: Colors.white),
+                              )
+                            ],
+                          ),
+                        ),
                     loading: () => Center(
                           child: CircularProgressIndicator(),
                         ),

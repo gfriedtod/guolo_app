@@ -54,7 +54,7 @@ class TicketsListPageView extends StatelessWidget {
                         ),
                     successStory: (val) => SizedBox(
                           width: size.width * 0.9,
-                          // height: size.height*0.9,
+                           height: size.height * 0.7,
                           child: val.length > 0
                               ? Column(
                                   children: [
@@ -68,21 +68,26 @@ class TicketsListPageView extends StatelessWidget {
                                       ),
                                   ],
                                 )
-                              : Column(
-                                  children: [
-                                    SizedBox(
-                                        height: 300,
-                                        child: Image.asset(
-                                            'assets/images/illustration3.png')),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "Aucune donnée trouvé",
-                                      style: TextStyle(color: Colors.white),
-                                    )
-                                  ],
+                              : SizedBox(
+                            width: double.infinity,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                    height: 300,
+                                    child: Image.asset(
+                                        'assets/images/illustration3.png')),
+                                SizedBox(
+                                  height: 10,
                                 ),
+                                Text(
+                                  "Aucune donnée trouvé",
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
+                            ),
+                          ),
                         ),
                     error: (_) => Column(
                           children: [

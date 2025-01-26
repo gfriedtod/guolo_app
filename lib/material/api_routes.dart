@@ -3,7 +3,7 @@ import 'package:guolo_app/models/buy_ticket.dart';
 class ApiRoute {
   static CurrentRoute currentRoute = CurrentRoute.login;
   static String getApiRoute(String route) {
-    return "http://192.168.112.164:8080/$route";
+    return "http://37.60.239.221:8086/$route";
   }
 
   static String login() {
