@@ -47,7 +47,7 @@ void main() async {
   );
   //Assign publishable key to flutter_stripe
   Stripe.publishableKey =
-      "pk_test_51Qk3wY6kIjqqcqePLoVo8eBERFkhxnwdK7WCsSBhKlq1LFDuGb0gvYIzDCjeSDIeejmVflCR3cbKvOwIkT3U73EB00YrJtv8ta";
+      "pk_live_51Ns7lSLpz6nIxV1VRZ3fF5UZOkucnrIaUN827YGTuMdf84MGINWYo3e8nQBEGlb3tWRZI3AZOIz4NMwjqM80tQGX00C4KHvU4F";
 
   //Load our .env file that contains our Stripe Secret key
   await dotenv.load(fileName: "assets/env/.env");

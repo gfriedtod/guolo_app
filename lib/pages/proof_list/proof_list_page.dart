@@ -46,37 +46,72 @@ class ProofListPage extends StatelessWidget {
                     success: (paymentProof) => SingleChildScrollView(
                           child: SizedBox(
                             height: size.height * 0.9,
-                            child: ListView.builder(
-                                itemCount: paymentProof.length,
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  DocumentViewPage(
-                                                      link: paymentProof[index]
-                                                          .link!),
-                                            ));
-                                      },
-                                      child: Card(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Row(
-                                            children: [
-                                              Icon(CupertinoIcons.doc_append),
-                                              Text(paymentProof[index].name! ??
-                                                  "test"),
-                                            ],
+                            child: paymentProof.length > 0
+                                ? ListView.builder(
+                                    itemCount: paymentProof.length,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      DocumentViewPage(
+                                                          link: paymentProof[
+                                                                  index]
+                                                              .link!),
+                                                ));
+                                          },
+                                          child: Card(
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Row(
+                                                children: [
+                                                  Icon(CupertinoIcons
+                                                      .doc_append),
+                                                  SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  Flexible(
+                                                    child: FittedBox(
+                                                      child: Text(
+                                                          paymentProof[index]
+                                                                  .name! ??
+                                                              "test"),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                      );
+                                    })
+                                : SizedBox(
+                                    width: double.infinity,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                            height: 300,
+                                            child: Image.asset(
+                                                'assets/images/illustration3.png')),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          "Aucune donnée trouvé",
+                                          style: TextStyle(color: Colors.green),
+                                        )
+                                      ],
                                     ),
-                                  );
-                                }),
+                                  ),
                           ),
                         )),
               ),
