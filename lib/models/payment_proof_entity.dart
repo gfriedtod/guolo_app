@@ -8,6 +8,7 @@ class PaymentProofEntity {
 	String? id;
 	String? link;
 	PaymentProofIdLottery? idLottery;
+	dynamic name;
 
 	PaymentProofEntity();
 

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guolo_app/models/lottery_ticket_entity.dart';
+import 'package:guolo_app/pages/document_view/document_view_page.dart';
 import 'package:guolo_app/services/payment_proof/payment_proof_cubit.dart';
 
 import '../../repositorys/payment_proof_repository.dart';
@@ -20,7 +21,8 @@ class ProofListPage extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => PaymentProofCubit(
-            RepositoryProvider.of<PaymentProofRepository>(context))..init(lotteryDto.id),
+            RepositoryProvider.of<PaymentProofRepository>(context))
+          ..init(lotteryDto.id),
         child: BlocConsumer<PaymentProofCubit, PaymentProofState>(
           listener: (context, state) {
             state.maybeWhen(
@@ -34,7 +36,7 @@ class ProofListPage extends StatelessWidget {
             return Center(
               child: RefreshIndicator(
                 onRefresh: () async {
-                 await context.read<PaymentProofCubit>().init(lotteryDto.id);
+                  await context.read<PaymentProofCubit>().init(lotteryDto.id);
                 },
                 child: state.maybeWhen(
                     orElse: () {
@@ -50,8 +52,15 @@ class ProofListPage extends StatelessWidget {
                                   return Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: GestureDetector(
-                                      onTap: (){
-
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DocumentViewPage(
+                                                      link: paymentProof[index]
+                                                          .link!),
+                                            ));
                                       },
                                       child: Card(
                                         child: Padding(
@@ -59,7 +68,8 @@ class ProofListPage extends StatelessWidget {
                                           child: Row(
                                             children: [
                                               Icon(CupertinoIcons.doc_append),
-                                              Text("Preuves de paiement"),
+                                              Text(paymentProof[index].name! ??
+                                                  "test"),
                                             ],
                                           ),
                                         ),

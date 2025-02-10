@@ -16,6 +16,10 @@ PaymentProofEntity $PaymentProofEntityFromJson(Map<String, dynamic> json) {
   if (idLottery != null) {
     paymentProofEntity.idLottery = idLottery;
   }
+  final dynamic name = json['name'];
+  if (name != null) {
+    paymentProofEntity.name = name;
+  }
   return paymentProofEntity;
 }
 
@@ -24,6 +28,7 @@ Map<String, dynamic> $PaymentProofEntityToJson(PaymentProofEntity entity) {
   data['id'] = entity.id;
   data['link'] = entity.link;
   data['idLottery'] = entity.idLottery?.toJson();
+  data['name'] = entity.name;
   return data;
 }
 
@@ -32,11 +37,13 @@ extension PaymentProofEntityExtension on PaymentProofEntity {
     String? id,
     String? link,
     PaymentProofIdLottery? idLottery,
+    dynamic name,
   }) {
     return PaymentProofEntity()
       ..id = id ?? this.id
       ..link = link ?? this.link
-      ..idLottery = idLottery ?? this.idLottery;
+      ..idLottery = idLottery ?? this.idLottery
+      ..name = name ?? this.name;
   }
 }
 
