@@ -161,14 +161,11 @@ class LoginPageView extends StatelessWidget {
                         const SizedBox(
                           height: 20,
                         ),
+
                         ButtonComponentView(
                             title: 'Connexion avec google',
                             onPressed: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const HomePageView()));
+                              context.read<AuthenticationBloc>().add(AuthenticationEvent.googleLogin());
                             },
                             primary: false,
                             image: SvgPicture.asset(

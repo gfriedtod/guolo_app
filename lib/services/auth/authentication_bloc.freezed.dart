@@ -24,6 +24,7 @@ mixin _$AuthenticationEvent {
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
     required TResult Function(User user) updateUser,
+    required TResult Function() googleLogin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$AuthenticationEvent {
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
     TResult? Function(User user)? updateUser,
+    TResult? Function()? googleLogin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$AuthenticationEvent {
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
     TResult Function(User user)? updateUser,
+    TResult Function()? googleLogin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$AuthenticationEvent {
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_GoogleLogin value) googleLogin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$AuthenticationEvent {
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_GoogleLogin value)? googleLogin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$AuthenticationEvent {
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_GoogleLogin value)? googleLogin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -175,6 +181,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
     required TResult Function(User user) updateUser,
+    required TResult Function() googleLogin,
   }) {
     return startedLogin(user);
   }
@@ -188,6 +195,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
     TResult? Function(User user)? updateUser,
+    TResult? Function()? googleLogin,
   }) {
     return startedLogin?.call(user);
   }
@@ -201,6 +209,7 @@ class _$StartedImpl implements _Started {
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
     TResult Function(User user)? updateUser,
+    TResult Function()? googleLogin,
     required TResult orElse(),
   }) {
     if (startedLogin != null) {
@@ -218,6 +227,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_GoogleLogin value) googleLogin,
   }) {
     return startedLogin(this);
   }
@@ -231,6 +241,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_GoogleLogin value)? googleLogin,
   }) {
     return startedLogin?.call(this);
   }
@@ -244,6 +255,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_GoogleLogin value)? googleLogin,
     required TResult orElse(),
   }) {
     if (startedLogin != null) {
@@ -339,6 +351,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
     required TResult Function(User user) updateUser,
+    required TResult Function() googleLogin,
   }) {
     return startedLogout(user);
   }
@@ -352,6 +365,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
     TResult? Function(User user)? updateUser,
+    TResult? Function()? googleLogin,
   }) {
     return startedLogout?.call(user);
   }
@@ -365,6 +379,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
     TResult Function(User user)? updateUser,
+    TResult Function()? googleLogin,
     required TResult orElse(),
   }) {
     if (startedLogout != null) {
@@ -382,6 +397,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_GoogleLogin value) googleLogin,
   }) {
     return startedLogout(this);
   }
@@ -395,6 +411,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_GoogleLogin value)? googleLogin,
   }) {
     return startedLogout?.call(this);
   }
@@ -408,6 +425,7 @@ class _$StartedLogoutImpl implements _StartedLogout {
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_GoogleLogin value)? googleLogin,
     required TResult orElse(),
   }) {
     if (startedLogout != null) {
@@ -504,6 +522,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
     required TResult Function(User user) updateUser,
+    required TResult Function() googleLogin,
   }) {
     return startedRegister(user);
   }
@@ -517,6 +536,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
     TResult? Function(User user)? updateUser,
+    TResult? Function()? googleLogin,
   }) {
     return startedRegister?.call(user);
   }
@@ -530,6 +550,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
     TResult Function(User user)? updateUser,
+    TResult Function()? googleLogin,
     required TResult orElse(),
   }) {
     if (startedRegister != null) {
@@ -547,6 +568,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_GoogleLogin value) googleLogin,
   }) {
     return startedRegister(this);
   }
@@ -560,6 +582,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_GoogleLogin value)? googleLogin,
   }) {
     return startedRegister?.call(this);
   }
@@ -573,6 +596,7 @@ class _$StartedRegisterImpl implements _StartedRegister {
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_GoogleLogin value)? googleLogin,
     required TResult orElse(),
   }) {
     if (startedRegister != null) {
@@ -670,6 +694,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
     required TResult Function(User user) updateUser,
+    required TResult Function() googleLogin,
   }) {
     return startedVerified(emailVerified);
   }
@@ -683,6 +708,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
     TResult? Function(User user)? updateUser,
+    TResult? Function()? googleLogin,
   }) {
     return startedVerified?.call(emailVerified);
   }
@@ -696,6 +722,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
     TResult Function(User user)? updateUser,
+    TResult Function()? googleLogin,
     required TResult orElse(),
   }) {
     if (startedVerified != null) {
@@ -713,6 +740,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_GoogleLogin value) googleLogin,
   }) {
     return startedVerified(this);
   }
@@ -726,6 +754,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_GoogleLogin value)? googleLogin,
   }) {
     return startedVerified?.call(this);
   }
@@ -739,6 +768,7 @@ class _$StartedVerifiedImpl implements _StartedVerified {
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_GoogleLogin value)? googleLogin,
     required TResult orElse(),
   }) {
     if (startedVerified != null) {
@@ -835,6 +865,7 @@ class _$SendOtpImpl implements _SendOtp {
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
     required TResult Function(User user) updateUser,
+    required TResult Function() googleLogin,
   }) {
     return sendOtp(email);
   }
@@ -848,6 +879,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
     TResult? Function(User user)? updateUser,
+    TResult? Function()? googleLogin,
   }) {
     return sendOtp?.call(email);
   }
@@ -861,6 +893,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
     TResult Function(User user)? updateUser,
+    TResult Function()? googleLogin,
     required TResult orElse(),
   }) {
     if (sendOtp != null) {
@@ -878,6 +911,7 @@ class _$SendOtpImpl implements _SendOtp {
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_GoogleLogin value) googleLogin,
   }) {
     return sendOtp(this);
   }
@@ -891,6 +925,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_GoogleLogin value)? googleLogin,
   }) {
     return sendOtp?.call(this);
   }
@@ -904,6 +939,7 @@ class _$SendOtpImpl implements _SendOtp {
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_GoogleLogin value)? googleLogin,
     required TResult orElse(),
   }) {
     if (sendOtp != null) {
@@ -999,6 +1035,7 @@ class _$UpdateUserImpl implements _UpdateUser {
     required TResult Function(EmailVerified emailVerified) startedVerified,
     required TResult Function(String email) sendOtp,
     required TResult Function(User user) updateUser,
+    required TResult Function() googleLogin,
   }) {
     return updateUser(user);
   }
@@ -1012,6 +1049,7 @@ class _$UpdateUserImpl implements _UpdateUser {
     TResult? Function(EmailVerified emailVerified)? startedVerified,
     TResult? Function(String email)? sendOtp,
     TResult? Function(User user)? updateUser,
+    TResult? Function()? googleLogin,
   }) {
     return updateUser?.call(user);
   }
@@ -1025,6 +1063,7 @@ class _$UpdateUserImpl implements _UpdateUser {
     TResult Function(EmailVerified emailVerified)? startedVerified,
     TResult Function(String email)? sendOtp,
     TResult Function(User user)? updateUser,
+    TResult Function()? googleLogin,
     required TResult orElse(),
   }) {
     if (updateUser != null) {
@@ -1042,6 +1081,7 @@ class _$UpdateUserImpl implements _UpdateUser {
     required TResult Function(_StartedVerified value) startedVerified,
     required TResult Function(_SendOtp value) sendOtp,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_GoogleLogin value) googleLogin,
   }) {
     return updateUser(this);
   }
@@ -1055,6 +1095,7 @@ class _$UpdateUserImpl implements _UpdateUser {
     TResult? Function(_StartedVerified value)? startedVerified,
     TResult? Function(_SendOtp value)? sendOtp,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_GoogleLogin value)? googleLogin,
   }) {
     return updateUser?.call(this);
   }
@@ -1068,6 +1109,7 @@ class _$UpdateUserImpl implements _UpdateUser {
     TResult Function(_StartedVerified value)? startedVerified,
     TResult Function(_SendOtp value)? sendOtp,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_GoogleLogin value)? googleLogin,
     required TResult orElse(),
   }) {
     if (updateUser != null) {
@@ -1087,6 +1129,141 @@ abstract class _UpdateUser implements AuthenticationEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateUserImplCopyWith<_$UpdateUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GoogleLoginImplCopyWith<$Res> {
+  factory _$$GoogleLoginImplCopyWith(
+          _$GoogleLoginImpl value, $Res Function(_$GoogleLoginImpl) then) =
+      __$$GoogleLoginImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GoogleLoginImplCopyWithImpl<$Res>
+    extends _$AuthenticationEventCopyWithImpl<$Res, _$GoogleLoginImpl>
+    implements _$$GoogleLoginImplCopyWith<$Res> {
+  __$$GoogleLoginImplCopyWithImpl(
+      _$GoogleLoginImpl _value, $Res Function(_$GoogleLoginImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthenticationEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$GoogleLoginImpl implements _GoogleLogin {
+  const _$GoogleLoginImpl();
+
+  @override
+  String toString() {
+    return 'AuthenticationEvent.googleLogin()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GoogleLoginImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(User user) startedLogin,
+    required TResult Function(User user) startedLogout,
+    required TResult Function(User user) startedRegister,
+    required TResult Function(EmailVerified emailVerified) startedVerified,
+    required TResult Function(String email) sendOtp,
+    required TResult Function(User user) updateUser,
+    required TResult Function() googleLogin,
+  }) {
+    return googleLogin();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(User user)? startedLogin,
+    TResult? Function(User user)? startedLogout,
+    TResult? Function(User user)? startedRegister,
+    TResult? Function(EmailVerified emailVerified)? startedVerified,
+    TResult? Function(String email)? sendOtp,
+    TResult? Function(User user)? updateUser,
+    TResult? Function()? googleLogin,
+  }) {
+    return googleLogin?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User user)? startedLogin,
+    TResult Function(User user)? startedLogout,
+    TResult Function(User user)? startedRegister,
+    TResult Function(EmailVerified emailVerified)? startedVerified,
+    TResult Function(String email)? sendOtp,
+    TResult Function(User user)? updateUser,
+    TResult Function()? googleLogin,
+    required TResult orElse(),
+  }) {
+    if (googleLogin != null) {
+      return googleLogin();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) startedLogin,
+    required TResult Function(_StartedLogout value) startedLogout,
+    required TResult Function(_StartedRegister value) startedRegister,
+    required TResult Function(_StartedVerified value) startedVerified,
+    required TResult Function(_SendOtp value) sendOtp,
+    required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_GoogleLogin value) googleLogin,
+  }) {
+    return googleLogin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? startedLogin,
+    TResult? Function(_StartedLogout value)? startedLogout,
+    TResult? Function(_StartedRegister value)? startedRegister,
+    TResult? Function(_StartedVerified value)? startedVerified,
+    TResult? Function(_SendOtp value)? sendOtp,
+    TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_GoogleLogin value)? googleLogin,
+  }) {
+    return googleLogin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? startedLogin,
+    TResult Function(_StartedLogout value)? startedLogout,
+    TResult Function(_StartedRegister value)? startedRegister,
+    TResult Function(_StartedVerified value)? startedVerified,
+    TResult Function(_SendOtp value)? sendOtp,
+    TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_GoogleLogin value)? googleLogin,
+    required TResult orElse(),
+  }) {
+    if (googleLogin != null) {
+      return googleLogin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GoogleLogin implements AuthenticationEvent {
+  const factory _GoogleLogin() = _$GoogleLoginImpl;
 }
 
 /// @nodoc

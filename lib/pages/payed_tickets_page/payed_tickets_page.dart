@@ -73,7 +73,7 @@ class PayedTicketPage extends StatelessWidget {
   final List<TicketEntity> tickets;
   List<ParieTypeOb> parieTypes = [
     ParieTypeOb(type: 'Parie unique', value: false),
-    ParieTypeOb(type: 'Abonement', value: true),
+    // ParieTypeOb(type: 'Abonement', value: true),
   ];
   LotteryEntity lotteryEntity;
   PayedTicketPage(
@@ -363,7 +363,7 @@ class _ParieTypeListViewState extends State<_ParieTypeListView> {
           height: 70,
           child: FittedBox(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 _ParieType(
                   type: widget.parieTypes[0].type,
@@ -376,14 +376,14 @@ class _ParieTypeListViewState extends State<_ParieTypeListView> {
                 const SizedBox(
                   width: 10,
                 ),
-                _ParieType(
-                  type: widget.parieTypes[1].type,
-                  value: widget.parieTypes[1].value,
-                  choices: widget.parieTypes,
-                  onToggle: () {
-                    setState(() {});
-                  },
-                ),
+                // _ParieType(
+                //   type: widget.parieTypes[1].type,
+                //   value: widget.parieTypes[1].value,
+                //   choices: widget.parieTypes,
+                //   onToggle: () {
+                //     setState(() {});
+                //   },
+                // ),
               ],
             ),
           ),

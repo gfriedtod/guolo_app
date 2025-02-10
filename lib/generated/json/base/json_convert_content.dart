@@ -6,6 +6,8 @@
 import 'package:flutter/material.dart' show debugPrint;
 import 'package:guolo_app/models/lottery_entity.dart';
 import 'package:guolo_app/models/lottery_ticket_entity.dart';
+import 'package:guolo_app/models/payment_proof_entity.dart';
+import 'package:guolo_app/models/payment_request_entity.dart';
 import 'package:guolo_app/models/ticket_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
@@ -172,6 +174,43 @@ class JsonConvert {
       return data.map<LotteryTicketTickets>((Map<String, dynamic> e) =>
           LotteryTicketTickets.fromJson(e)).toList() as M;
     }
+    if (<PaymentProofEntity>[] is M) {
+      return data.map<PaymentProofEntity>((Map<String, dynamic> e) =>
+          PaymentProofEntity.fromJson(e)).toList() as M;
+    }
+    if (<PaymentProofIdLottery>[] is M) {
+      return data.map<PaymentProofIdLottery>((Map<String, dynamic> e) =>
+          PaymentProofIdLottery.fromJson(e)).toList() as M;
+    }
+    if (<PaymentProofIdLotteryAdmin>[] is M) {
+      return data.map<PaymentProofIdLotteryAdmin>((Map<String, dynamic> e) =>
+          PaymentProofIdLotteryAdmin.fromJson(e)).toList() as M;
+    }
+    if (<PaymentProofIdLotteryTickets>[] is M) {
+      return data.map<PaymentProofIdLotteryTickets>((Map<String, dynamic> e) =>
+          PaymentProofIdLotteryTickets.fromJson(e)).toList() as M;
+    }
+    if (<PaymentRequestEntity>[] is M) {
+      return data.map<PaymentRequestEntity>((Map<String, dynamic> e) =>
+          PaymentRequestEntity.fromJson(e)).toList() as M;
+    }
+    if (<PaymentRequestIdLottery>[] is M) {
+      return data.map<PaymentRequestIdLottery>((Map<String, dynamic> e) =>
+          PaymentRequestIdLottery.fromJson(e)).toList() as M;
+    }
+    if (<PaymentRequestIdLotteryAdmin>[] is M) {
+      return data.map<PaymentRequestIdLotteryAdmin>((Map<String, dynamic> e) =>
+          PaymentRequestIdLotteryAdmin.fromJson(e)).toList() as M;
+    }
+    if (<PaymentRequestIdLotteryTickets>[] is M) {
+      return data.map<PaymentRequestIdLotteryTickets>((
+          Map<String, dynamic> e) => PaymentRequestIdLotteryTickets.fromJson(e))
+          .toList() as M;
+    }
+    if (<PaymentRequestIdUser>[] is M) {
+      return data.map<PaymentRequestIdUser>((Map<String, dynamic> e) =>
+          PaymentRequestIdUser.fromJson(e)).toList() as M;
+    }
     if (<TicketEntity>[] is M) {
       return data.map<TicketEntity>((Map<String, dynamic> e) =>
           TicketEntity.fromJson(e)).toList() as M;
@@ -213,6 +252,19 @@ class JsonConvertClassCollection {
     (LotteryTicketLotterieDtoAdmin).toString(): LotteryTicketLotterieDtoAdmin
         .fromJson,
     (LotteryTicketTickets).toString(): LotteryTicketTickets.fromJson,
+    (PaymentProofEntity).toString(): PaymentProofEntity.fromJson,
+    (PaymentProofIdLottery).toString(): PaymentProofIdLottery.fromJson,
+    (PaymentProofIdLotteryAdmin).toString(): PaymentProofIdLotteryAdmin
+        .fromJson,
+    (PaymentProofIdLotteryTickets).toString(): PaymentProofIdLotteryTickets
+        .fromJson,
+    (PaymentRequestEntity).toString(): PaymentRequestEntity.fromJson,
+    (PaymentRequestIdLottery).toString(): PaymentRequestIdLottery.fromJson,
+    (PaymentRequestIdLotteryAdmin).toString(): PaymentRequestIdLotteryAdmin
+        .fromJson,
+    (PaymentRequestIdLotteryTickets).toString(): PaymentRequestIdLotteryTickets
+        .fromJson,
+    (PaymentRequestIdUser).toString(): PaymentRequestIdUser.fromJson,
     (TicketEntity).toString(): TicketEntity.fromJson,
     (TicketLotterie).toString(): TicketLotterie.fromJson,
     (TicketLotterieAdmin).toString(): TicketLotterieAdmin.fromJson,

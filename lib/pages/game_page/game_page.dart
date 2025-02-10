@@ -100,39 +100,58 @@ class PlayCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(
-                  LucideIcons.calendar,
-                  color: Colors.grey,
-                  size: 15,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  lotteryEntity.startedDate!,
-                  style: TextStyle(
+                Wrap(
+                  children: [
+                    Icon(
+                      LucideIcons.calendar,
                       color: Colors.grey,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 10),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Icon(
-                  LucideIcons.clock_8,
-                  color: Colors.grey,
-                  size: 15,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  lotteryEntity.hour ?? '10H00',
-                  style: TextStyle(
+                      size: 15,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      lotteryEntity.startedDate!,
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 10),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Icon(
+                      LucideIcons.clock_8,
                       color: Colors.grey,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 10),
-                )
+                      size: 15,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      lotteryEntity.hour ?? '10H00',
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 10),
+                    )
+                  ],
+                ),
+                const Spacer(),
+                Wrap(
+                  children: [
+
+                    Text(
+                      '${lotteryEntity.tickets!.first.price ?? '10'} par ticket FCFA',
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 10),
+                    ),
+                  ],
+                ),
+
+
               ],
             ),
             const SizedBox(

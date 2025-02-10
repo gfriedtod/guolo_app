@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:guolo_app/material/colors.dart';
 import 'package:guolo_app/pages/home_page/home_page.dart';
 import 'package:guolo_app/pages/create_account_page/create_account_page.dart';
@@ -16,6 +17,8 @@ import 'package:guolo_app/pages/login_page/login_page.dart';
 import 'package:guolo_app/pages/signup_page/signup_page_view.dart';
 import 'package:bloc/bloc.dart';
 import 'package:guolo_app/repositorys/lottery_repository.dart';
+import 'package:guolo_app/repositorys/payment_proof_repository.dart';
+import 'package:guolo_app/repositorys/payment_request_repository.dart';
 import 'package:guolo_app/repositorys/ticket_repository.dart';
 import 'package:guolo_app/services/auth/authentication_bloc.dart';
 import 'package:guolo_app/services/lottery/lottery_bloc.dart';
@@ -23,6 +26,7 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:guolo_app/pages/splash_screen/splash_screen.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' as sup;
 
 import 'models/user.dart';
 
@@ -37,7 +41,10 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   FlutterNativeSplash.remove();
   await initLocalStorage();
-  ; // Initialize GetStorage
+  await sup.Supabase.initialize(
+    url: 'https://drxszumeyeyrxuxltdbg.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRyeHN6dW1leWV5cnh1eGx0ZGJnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY4MjQ1MjgsImV4cCI6MjA1MjQwMDUyOH0.ELzQ5o_mBJ6E3DZObVPVXGY_fmettZ236O61Z2lQKQw',
+  );
   //Assign publishable key to flutter_stripe
   Stripe.publishableKey =
       "pk_test_51Qk3wY6kIjqqcqePLoVo8eBERFkhxnwdK7WCsSBhKlq1LFDuGb0gvYIzDCjeSDIeejmVflCR3cbKvOwIkT3U73EB00YrJtv8ta";
@@ -97,7 +104,11 @@ class MyApp extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(create: (context) => TicketRepository(dio: dio)),
-        RepositoryProvider(create: (context) => dio)
+        RepositoryProvider(create: (context) => dio),
+        RepositoryProvider(create: (context) => lotteryRepository),
+        RepositoryProvider(create: (context) => PaymentRequestRepository(dio: dio)),
+        RepositoryProvider(create: (context) => PaymentProofRepository(dio: dio)),
+
       ],
       child: MultiBlocProvider(
           providers: [

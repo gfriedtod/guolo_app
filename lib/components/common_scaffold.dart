@@ -11,6 +11,7 @@ import 'package:guolo_app/components/simple_app_bar.dart';
 import 'package:guolo_app/material/colors.dart';
 import 'package:guolo_app/material/environement_path.dart';
 import 'package:guolo_app/models/user.dart';
+import 'package:guolo_app/pages/chat_page/chat_page.dart';
 import 'package:guolo_app/pages/history_page/history_page.dart';
 import 'package:guolo_app/pages/game_page/game_page.dart';
 import 'package:guolo_app/pages/home_page/home_page.dart';
@@ -53,9 +54,16 @@ class _CommonScaffoldState extends State<CommonScaffold> {
       )
     },
     {
+      'page': ChatPage(),
+      'appBar': SimpleAppBar(
+        title: 'Chat',
+        destination: HomePageView(),
+      )
+    },
+    {
       'page': TermsAndConditionPageView(),
       'appBar': SimpleAppBar(
-        title: 'Conditions d\'utilisation',
+        title: "Conditions d'utilisation",
         destination: HomePageView(),
       )
     }
@@ -355,11 +363,7 @@ class _CommonScaffoldState extends State<CommonScaffold> {
                     : const SizedBox.shrink(),
                 ListTile(
                   onTap: () {
-                    setState(() {
-                      widget.body = null;
-                      Navigator.pop(context);
-                      currentIndex.first = 3;
-                    });
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TermsAndConditionPageView()));
                   },
                   minVerticalPadding: 0,
                   title: const DrawerMenu(
@@ -381,7 +385,7 @@ class _CommonScaffoldState extends State<CommonScaffold> {
               child: (!false)
                   ? InkWell(
                       onTap: () {
-                        Navigator.pop(context);
+                        localStorage.clear();
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(

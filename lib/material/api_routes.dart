@@ -60,6 +60,21 @@ class ApiRoute {
     currentRoute = CurrentRoute.sendOtp;
     return ApiRoute.getApiRoute("api/auth/send-otp");
   }
+
+  static String message() {
+    currentRoute = CurrentRoute.message;
+    return ApiRoute.getApiRoute("api/message");
+  }
+
+  static String sendPaymentRequest() {
+    currentRoute = CurrentRoute.sendPaymentRequest;
+    return ApiRoute.getApiRoute("api/paymentRequest");
+  }
+
+  static String fetchProofByLotteryId(String id) {
+    currentRoute = CurrentRoute.sendPaymentRequest;
+    return ApiRoute.getApiRoute("api/admin/paymentProof/lottery/$id");
+  }
 }
 
 enum CurrentRoute {
@@ -70,5 +85,5 @@ enum CurrentRoute {
   fetchTicketsByLottery,
   verified,
   sendOtp,
-  getATicket, buyTicket, story, update
+  getATicket, buyTicket, story, update, message, sendPaymentRequest
 }

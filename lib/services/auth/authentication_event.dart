@@ -10,4 +10,5 @@ class AuthenticationEvent with _$AuthenticationEvent {
   const factory AuthenticationEvent.sendOtp(String email) = _SendOtp;
 
   const factory AuthenticationEvent.updateUser(User user) = _UpdateUser;
+  const factory AuthenticationEvent.googleLogin() = _GoogleLogin;
 }

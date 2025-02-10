@@ -52,6 +52,9 @@ dependencies:
   localstorage: ^5.0.0
   flutter_stripe: ^11.3.0
   flutter_dotenv: ^5.2.1
+  build: ^2.4.2
+  google_sign_in: ^6.2.2
+  easy_pdf_viewer: ^1.0.8
 
 
 
