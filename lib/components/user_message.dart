@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class UserMessage extends StatelessWidget {
   final String text;
-  final String date;
+  final String? date;
 
   const UserMessage({super.key, required this.text, required this.date});
   @override
@@ -29,7 +29,7 @@ class UserMessage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 5,),
-        Text(date, style: const TextStyle(color: Colors.grey),)
+        Text(date ?? " ", style: const TextStyle(color: Colors.grey),)
       ],
     );
   }

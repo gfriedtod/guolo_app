@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class BotMessage extends StatelessWidget {
   final String text;
-  final String date;
+  final String? date;
 
   const BotMessage({super.key, required this.text, required this.date});
   @override
@@ -29,7 +29,7 @@ class BotMessage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 5,),
-        Text(date, style: const TextStyle(color: Colors.grey),)
+        Text(date ?? "", style: const TextStyle(color: Colors.grey),)
       ],
     );
   }

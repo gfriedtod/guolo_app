@@ -16,44 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MessageEvent {
-  ChatMessage get message => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChatMessage message) started,
+    required TResult Function() init,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChatMessage message)? started,
+    TResult? Function()? init,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChatMessage message)? started,
+    TResult Function()? init,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of MessageEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MessageEventCopyWith<MessageEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,8 +61,6 @@ abstract class $MessageEventCopyWith<$Res> {
   factory $MessageEventCopyWith(
           MessageEvent value, $Res Function(MessageEvent) then) =
       _$MessageEventCopyWithImpl<$Res, MessageEvent>;
-  @useResult
-  $Res call({ChatMessage message});
 }
 
 /// @nodoc
@@ -78,27 +75,13 @@ class _$MessageEventCopyWithImpl<$Res, $Val extends MessageEvent>
 
   /// Create a copy of MessageEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_value.copyWith(
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as ChatMessage,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res>
-    implements $MessageEventCopyWith<$Res> {
+abstract class _$$StartedImplCopyWith<$Res> {
   factory _$$StartedImplCopyWith(
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({ChatMessage message});
 }
@@ -129,15 +112,23 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
+class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   const _$StartedImpl(this.message);
 
   @override
   final ChatMessage message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'MessageEvent.started(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'MessageEvent.started'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -163,6 +154,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChatMessage message) started,
+    required TResult Function() init,
   }) {
     return started(message);
   }
@@ -171,6 +163,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChatMessage message)? started,
+    TResult? Function()? init,
   }) {
     return started?.call(message);
   }
@@ -179,6 +172,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChatMessage message)? started,
+    TResult Function()? init,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -191,6 +185,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
   }) {
     return started(this);
   }
@@ -199,6 +194,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
   }) {
     return started?.call(this);
   }
@@ -207,6 +203,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -219,15 +216,123 @@ class _$StartedImpl implements _Started {
 abstract class _Started implements MessageEvent {
   const factory _Started(final ChatMessage message) = _$StartedImpl;
 
-  @override
   ChatMessage get message;
 
   /// Create a copy of MessageEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InitImplCopyWith<$Res> {
+  factory _$$InitImplCopyWith(
+          _$InitImpl value, $Res Function(_$InitImpl) then) =
+      __$$InitImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitImplCopyWithImpl<$Res>
+    extends _$MessageEventCopyWithImpl<$Res, _$InitImpl>
+    implements _$$InitImplCopyWith<$Res> {
+  __$$InitImplCopyWithImpl(_$InitImpl _value, $Res Function(_$InitImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MessageEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$InitImpl with DiagnosticableTreeMixin implements _Init {
+  const _$InitImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MessageEvent.init()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'MessageEvent.init'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ChatMessage message) started,
+    required TResult Function() init,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ChatMessage message)? started,
+    TResult? Function()? init,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ChatMessage message)? started,
+    TResult Function()? init,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Init implements MessageEvent {
+  const factory _Init() = _$InitImpl;
 }
 
 /// @nodoc
@@ -235,25 +340,27 @@ mixin _$MessageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<ChatMessage> messages) loading,
+    required TResult Function(ValueListenable<Box<ChatMessage>> messages)
+        loading,
     required TResult Function(String error) error,
-    required TResult Function(List<ChatMessage> messages) success,
+    required TResult Function(ValueListenable<Box<ChatMessage>> messages)
+        success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<ChatMessage> messages)? loading,
+    TResult? Function(ValueListenable<Box<ChatMessage>> messages)? loading,
     TResult? Function(String error)? error,
-    TResult? Function(List<ChatMessage> messages)? success,
+    TResult? Function(ValueListenable<Box<ChatMessage>> messages)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<ChatMessage> messages)? loading,
+    TResult Function(ValueListenable<Box<ChatMessage>> messages)? loading,
     TResult Function(String error)? error,
-    TResult Function(List<ChatMessage> messages)? success,
+    TResult Function(ValueListenable<Box<ChatMessage>> messages)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -326,12 +433,18 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   const _$InitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'MessageState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'MessageState.initial'));
   }
 
   @override
@@ -347,9 +460,11 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<ChatMessage> messages) loading,
+    required TResult Function(ValueListenable<Box<ChatMessage>> messages)
+        loading,
     required TResult Function(String error) error,
-    required TResult Function(List<ChatMessage> messages) success,
+    required TResult Function(ValueListenable<Box<ChatMessage>> messages)
+        success,
   }) {
     return initial();
   }
@@ -358,9 +473,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<ChatMessage> messages)? loading,
+    TResult? Function(ValueListenable<Box<ChatMessage>> messages)? loading,
     TResult? Function(String error)? error,
-    TResult? Function(List<ChatMessage> messages)? success,
+    TResult? Function(ValueListenable<Box<ChatMessage>> messages)? success,
   }) {
     return initial?.call();
   }
@@ -369,9 +484,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<ChatMessage> messages)? loading,
+    TResult Function(ValueListenable<Box<ChatMessage>> messages)? loading,
     TResult Function(String error)? error,
-    TResult Function(List<ChatMessage> messages)? success,
+    TResult Function(ValueListenable<Box<ChatMessage>> messages)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -428,7 +543,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
           _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
       __$$LoadingImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ChatMessage> messages});
+  $Res call({ValueListenable<Box<ChatMessage>> messages});
 }
 
 /// @nodoc
@@ -448,29 +563,32 @@ class __$$LoadingImplCopyWithImpl<$Res>
   }) {
     return _then(_$LoadingImpl(
       null == messages
-          ? _value._messages
+          ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
-              as List<ChatMessage>,
+              as ValueListenable<Box<ChatMessage>>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl(final List<ChatMessage> messages) : _messages = messages;
+class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
+  const _$LoadingImpl(this.messages);
 
-  final List<ChatMessage> _messages;
   @override
-  List<ChatMessage> get messages {
-    if (_messages is EqualUnmodifiableListView) return _messages;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_messages);
+  final ValueListenable<Box<ChatMessage>> messages;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MessageState.loading(messages: $messages)';
   }
 
   @override
-  String toString() {
-    return 'MessageState.loading(messages: $messages)';
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'MessageState.loading'))
+      ..add(DiagnosticsProperty('messages', messages));
   }
 
   @override
@@ -478,12 +596,12 @@ class _$LoadingImpl implements _Loading {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadingImpl &&
-            const DeepCollectionEquality().equals(other._messages, _messages));
+            (identical(other.messages, messages) ||
+                other.messages == messages));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
+  int get hashCode => Object.hash(runtimeType, messages);
 
   /// Create a copy of MessageState
   /// with the given fields replaced by the non-null parameter values.
@@ -497,9 +615,11 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<ChatMessage> messages) loading,
+    required TResult Function(ValueListenable<Box<ChatMessage>> messages)
+        loading,
     required TResult Function(String error) error,
-    required TResult Function(List<ChatMessage> messages) success,
+    required TResult Function(ValueListenable<Box<ChatMessage>> messages)
+        success,
   }) {
     return loading(messages);
   }
@@ -508,9 +628,9 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<ChatMessage> messages)? loading,
+    TResult? Function(ValueListenable<Box<ChatMessage>> messages)? loading,
     TResult? Function(String error)? error,
-    TResult? Function(List<ChatMessage> messages)? success,
+    TResult? Function(ValueListenable<Box<ChatMessage>> messages)? success,
   }) {
     return loading?.call(messages);
   }
@@ -519,9 +639,9 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<ChatMessage> messages)? loading,
+    TResult Function(ValueListenable<Box<ChatMessage>> messages)? loading,
     TResult Function(String error)? error,
-    TResult Function(List<ChatMessage> messages)? success,
+    TResult Function(ValueListenable<Box<ChatMessage>> messages)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -569,9 +689,10 @@ class _$LoadingImpl implements _Loading {
 }
 
 abstract class _Loading implements MessageState {
-  const factory _Loading(final List<ChatMessage> messages) = _$LoadingImpl;
+  const factory _Loading(final ValueListenable<Box<ChatMessage>> messages) =
+      _$LoadingImpl;
 
-  List<ChatMessage> get messages;
+  ValueListenable<Box<ChatMessage>> get messages;
 
   /// Create a copy of MessageState
   /// with the given fields replaced by the non-null parameter values.
@@ -615,15 +736,23 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
+class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   const _$ErrorImpl(this.error);
 
   @override
   final String error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'MessageState.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'MessageState.error'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -649,9 +778,11 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<ChatMessage> messages) loading,
+    required TResult Function(ValueListenable<Box<ChatMessage>> messages)
+        loading,
     required TResult Function(String error) error,
-    required TResult Function(List<ChatMessage> messages) success,
+    required TResult Function(ValueListenable<Box<ChatMessage>> messages)
+        success,
   }) {
     return error(this.error);
   }
@@ -660,9 +791,9 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<ChatMessage> messages)? loading,
+    TResult? Function(ValueListenable<Box<ChatMessage>> messages)? loading,
     TResult? Function(String error)? error,
-    TResult? Function(List<ChatMessage> messages)? success,
+    TResult? Function(ValueListenable<Box<ChatMessage>> messages)? success,
   }) {
     return error?.call(this.error);
   }
@@ -671,9 +802,9 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<ChatMessage> messages)? loading,
+    TResult Function(ValueListenable<Box<ChatMessage>> messages)? loading,
     TResult Function(String error)? error,
-    TResult Function(List<ChatMessage> messages)? success,
+    TResult Function(ValueListenable<Box<ChatMessage>> messages)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -738,7 +869,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ChatMessage> messages});
+  $Res call({ValueListenable<Box<ChatMessage>> messages});
 }
 
 /// @nodoc
@@ -758,29 +889,32 @@ class __$$SuccessImplCopyWithImpl<$Res>
   }) {
     return _then(_$SuccessImpl(
       null == messages
-          ? _value._messages
+          ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
-              as List<ChatMessage>,
+              as ValueListenable<Box<ChatMessage>>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<ChatMessage> messages) : _messages = messages;
+class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
+  const _$SuccessImpl(this.messages);
 
-  final List<ChatMessage> _messages;
   @override
-  List<ChatMessage> get messages {
-    if (_messages is EqualUnmodifiableListView) return _messages;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_messages);
+  final ValueListenable<Box<ChatMessage>> messages;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'MessageState.success(messages: $messages)';
   }
 
   @override
-  String toString() {
-    return 'MessageState.success(messages: $messages)';
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'MessageState.success'))
+      ..add(DiagnosticsProperty('messages', messages));
   }
 
   @override
@@ -788,12 +922,12 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._messages, _messages));
+            (identical(other.messages, messages) ||
+                other.messages == messages));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
+  int get hashCode => Object.hash(runtimeType, messages);
 
   /// Create a copy of MessageState
   /// with the given fields replaced by the non-null parameter values.
@@ -807,9 +941,11 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<ChatMessage> messages) loading,
+    required TResult Function(ValueListenable<Box<ChatMessage>> messages)
+        loading,
     required TResult Function(String error) error,
-    required TResult Function(List<ChatMessage> messages) success,
+    required TResult Function(ValueListenable<Box<ChatMessage>> messages)
+        success,
   }) {
     return success(messages);
   }
@@ -818,9 +954,9 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<ChatMessage> messages)? loading,
+    TResult? Function(ValueListenable<Box<ChatMessage>> messages)? loading,
     TResult? Function(String error)? error,
-    TResult? Function(List<ChatMessage> messages)? success,
+    TResult? Function(ValueListenable<Box<ChatMessage>> messages)? success,
   }) {
     return success?.call(messages);
   }
@@ -829,9 +965,9 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<ChatMessage> messages)? loading,
+    TResult Function(ValueListenable<Box<ChatMessage>> messages)? loading,
     TResult Function(String error)? error,
-    TResult Function(List<ChatMessage> messages)? success,
+    TResult Function(ValueListenable<Box<ChatMessage>> messages)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -879,9 +1015,10 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements MessageState {
-  const factory _Success(final List<ChatMessage> messages) = _$SuccessImpl;
+  const factory _Success(final ValueListenable<Box<ChatMessage>> messages) =
+      _$SuccessImpl;
 
-  List<ChatMessage> get messages;
+  ValueListenable<Box<ChatMessage>> get messages;
 
   /// Create a copy of MessageState
   /// with the given fields replaced by the non-null parameter values.

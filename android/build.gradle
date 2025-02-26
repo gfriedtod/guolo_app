@@ -6,6 +6,11 @@ allprojects {
 }
 
 rootProject.buildDir = "../build"
+
+dependencies {
+//    implementation 'com.android.tools:desugar_jdk_libs:2.1.4'
+
+}
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
